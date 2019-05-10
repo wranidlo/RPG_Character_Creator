@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="buttonGroupSex">
       <AuxValues>
@@ -9,6 +9,7 @@
     </Component>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menuBar.setFont(new Font(&quot;TimesRoman&quot;, Font.BOLD, 15));"/>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JMenuBar()"/>
       </AuxValues>
       <SubComponents>
@@ -16,6 +17,24 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="menuFile.setFont(new Font(&quot;TimesRoman&quot;, Font.BOLD, 15));"/>
+          </AuxValues>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemSaveCharacter">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Save character"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemSaveCharacterActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemLoadCharacter">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Load Character"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuOptions">
           <Properties>
@@ -23,6 +42,9 @@
               <Connection code="&quot;Options&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="menuOptions.setFont(new Font(&quot;TimesRoman&quot;, Font.BOLD, 15));"/>
+          </AuxValues>
         </Menu>
       </SubComponents>
     </Menu>
@@ -50,17 +72,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane2" alignment="0" pref="329" max="32767" attributes="0"/>
+          <Component id="tabbedPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane2" alignment="0" pref="292" max="32767" attributes="0"/>
+          <Component id="tabbedPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JTabbedPane" name="jTabbedPane2">
+    <Container class="javax.swing.JTabbedPane" name="tabbedPanel">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tabbedPanel.setFont(new Font(&quot;TimesRoman&quot;, Font.BOLD, 15));"/>
+      </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -77,68 +102,118 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="scrollStory" alignment="0" pref="140" max="32767" attributes="0"/>
-                          <Component id="labelName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="textName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="labelStory" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labeSex" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonSexMale" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonSexFemale" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textName" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                          <Component id="labelStory" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="scrollStory" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="84" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
+                              <Component id="labeSex" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="buttonSexFemale" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="buttonSexMale" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="buttonAddPicture" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                                      <Component id="buttonPicture" min="-2" pref="219" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="textAddPicture" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labelName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelName" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="labeSex" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="textName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonSexMale" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="textName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="buttonSexMale" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="labelStory" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="buttonSexFemale" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="scrollStory" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="buttonPicture" min="-2" pref="400" max="-2" attributes="0"/>
+                                  <Component id="buttonAddPicture" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="textAddPicture" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="19" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labelStory" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonSexFemale" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="scrollStory" pref="186" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JButton" name="buttonPicture">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/rpg_creator/question.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="buttonPicture"/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JLabel" name="labelName">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Name"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="labelName.setFont(new Font(&quot;TimesRoman&quot;, Font.BOLD, 15));"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="textName">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="&quot;waran&quot;" type="code"/>
+                  <Connection code="&quot;Forgotten&quot;" type="code"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="textName.setFont(new Font(&quot;TimesRoman&quot;, Font.ITALIC, 15));"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="labelStory">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Story"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="labelStory.setFont(new Font(&quot;TimesRoman&quot;, Font.BOLD, 15));"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="labeSex">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sex"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="labeSex.setFont(new Font(&quot;TimesRoman&quot;, Font.BOLD, 15));"/>
+              </AuxValues>
             </Component>
             <Container class="javax.swing.JScrollPane" name="scrollStory">
               <AuxValues>
@@ -151,9 +226,11 @@
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Does not remember ..."/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="textStory.setLineWrap(true);&#xa;textStory.setWrapStyleWord(true);"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="textStory.setFont(new Font(&quot;TimesRoman&quot;, Font.ITALIC, 15));"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -162,15 +239,56 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Male"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSexMaleActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="buttonSexMale.setFont(new Font(&quot;TimesRoman&quot;, Font.PLAIN, 15));"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JRadioButton" name="buttonSexFemale">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Female"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="&quot;Female&quot;" type="code"/>
+                </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSexFemaleActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JRadioButton(&quot;Female&quot;,true)"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="buttonSexFemale.setFont(new Font(&quot;TimesRoman&quot;, Font.PLAIN, 15));"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="textAddPicture">
+              <Properties>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="&quot;question.png&quot;" type="code"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="textAddPicture.setFont(new Font(&quot;TimesRoman&quot;, Font.ITALIC, 15));"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="buttonAddPicture">
+              <Properties>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="&quot;Add picture&quot;" type="code"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddPictureActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="buttonAddPicture.setFont(new Font(&quot;TimesRoman&quot;, Font.BOLD, 15));"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelRace">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="panelRace.setBackground(Color.lightGray);"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Race">
@@ -182,17 +300,20 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="324" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="595" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="264" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="466" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="panelClass">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="panelClass.setBackground(Color.lightGray);"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Class">
@@ -204,17 +325,20 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="324" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="595" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="264" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="466" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="panelStats">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="panelStats.setBackground(Color.lightGray);"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Stats">
@@ -226,17 +350,20 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="324" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="595" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="264" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="466" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="panelEquipment">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="panelEquipment.setBackground(Color.lightGray);"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Equipment">
@@ -248,12 +375,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="324" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="595" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="264" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="466" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

@@ -5,6 +5,10 @@
  */
 package rpg_creator;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.io.File;
+
 /**
  *
  * @author baryl
@@ -29,8 +33,9 @@ public class Your_hero extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroupSex = new javax.swing.ButtonGroup();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        tabbedPanel = new javax.swing.JTabbedPane();
         panelName = new javax.swing.JPanel();
+        buttonPicture = new javax.swing.JButton();
         labelName = new javax.swing.JLabel();
         textName = new javax.swing.JTextField();
         labelStory = new javax.swing.JLabel();
@@ -38,13 +43,17 @@ public class Your_hero extends javax.swing.JFrame {
         scrollStory = new javax.swing.JScrollPane();
         textStory = new javax.swing.JTextArea();
         buttonSexMale = new javax.swing.JRadioButton();
-        buttonSexFemale = new javax.swing.JRadioButton();
+        buttonSexFemale = new javax.swing.JRadioButton("Female",true);
+        textAddPicture = new javax.swing.JTextField();
+        buttonAddPicture = new javax.swing.JButton();
         panelRace = new javax.swing.JPanel();
         panelClass = new javax.swing.JPanel();
         panelStats = new javax.swing.JPanel();
         panelEquipment = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
+        menuItemSaveCharacter = new javax.swing.JMenuItem();
+        menuItemLoadCharacter = new javax.swing.JMenuItem();
         menuOptions = new javax.swing.JMenu();
 
         buttonGroupSex.add(buttonSexMale);
@@ -52,42 +61,86 @@ public class Your_hero extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        buttonPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpg_creator/question.png"))); // NOI18N
+        buttonPicture.setText("buttonPicture");
+
+        labelName.setFont(new Font("TimesRoman", Font.BOLD, 15));
         labelName.setText("Name");
 
-        textName.setText("waran");
+        textName.setFont(new Font("TimesRoman", Font.ITALIC, 15));
+        textName.setText("Forgotten");
 
+        labelStory.setFont(new Font("TimesRoman", Font.BOLD, 15));
         labelStory.setText("Story");
 
+        labeSex.setFont(new Font("TimesRoman", Font.BOLD, 15));
         labeSex.setText("Sex");
 
         scrollStory.createVerticalScrollBar();
 
+        textStory.setFont(new Font("TimesRoman", Font.ITALIC, 15));
         textStory.setColumns(20);
         textStory.setRows(5);
+        textStory.setText("Does not remember ...");
         textStory.setLineWrap(true);
         textStory.setWrapStyleWord(true);
         scrollStory.setViewportView(textStory);
 
+        buttonSexMale.setFont(new Font("TimesRoman", Font.PLAIN, 15));
         buttonSexMale.setText("Male");
+        buttonSexMale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSexMaleActionPerformed(evt);
+            }
+        });
 
+        buttonSexFemale.setFont(new Font("TimesRoman", Font.PLAIN, 15));
         buttonSexFemale.setText("Female");
+        buttonSexFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSexFemaleActionPerformed(evt);
+            }
+        });
+
+        textAddPicture.setFont(new Font("TimesRoman", Font.ITALIC, 15));
+        textAddPicture.setText("question.png");
+
+        buttonAddPicture.setFont(new Font("TimesRoman", Font.BOLD, 15));
+        buttonAddPicture.setText("Add picture");
+        buttonAddPicture.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddPictureActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelNameLayout = new javax.swing.GroupLayout(panelName);
         panelName.setLayout(panelNameLayout);
         panelNameLayout.setHorizontalGroup(
             panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelNameLayout.createSequentialGroup()
-                .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(scrollStory, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(labelName, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textName, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelStory, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(41, 41, 41)
+                .addContainerGap()
                 .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labeSex)
-                    .addComponent(buttonSexMale)
-                    .addComponent(buttonSexFemale))
-                .addGap(0, 84, Short.MAX_VALUE))
+                    .addComponent(labelName)
+                    .addComponent(textName, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelStory)
+                    .addComponent(scrollStory, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelNameLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(labeSex)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelNameLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelNameLayout.createSequentialGroup()
+                                .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(buttonSexFemale)
+                                    .addComponent(buttonSexMale)
+                                    .addComponent(buttonAddPicture))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                .addComponent(buttonPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textAddPicture))))
+                .addContainerGap())
         );
         panelNameLayout.setVerticalGroup(
             panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,94 +148,157 @@ public class Your_hero extends javax.swing.JFrame {
                 .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelName)
                     .addComponent(labeSex))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSexMale))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelStory)
-                    .addComponent(buttonSexFemale))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollStory, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelNameLayout.createSequentialGroup()
+                        .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonSexMale))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelStory)
+                            .addComponent(buttonSexFemale))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(scrollStory))
+                    .addGroup(panelNameLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(buttonPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonAddPicture))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textAddPicture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)))
+                .addGap(5, 5, 5))
         );
 
-        jTabbedPane2.addTab("Name", panelName);
+        tabbedPanel.addTab("Name", panelName);
 
         javax.swing.GroupLayout panelRaceLayout = new javax.swing.GroupLayout(panelRace);
         panelRace.setLayout(panelRaceLayout);
         panelRaceLayout.setHorizontalGroup(
             panelRaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 324, Short.MAX_VALUE)
+            .addGap(0, 595, Short.MAX_VALUE)
         );
         panelRaceLayout.setVerticalGroup(
             panelRaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 264, Short.MAX_VALUE)
+            .addGap(0, 466, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("Race", panelRace);
+        tabbedPanel.addTab("Race", panelRace);
+        panelRace.setBackground(Color.lightGray);
 
         javax.swing.GroupLayout panelClassLayout = new javax.swing.GroupLayout(panelClass);
         panelClass.setLayout(panelClassLayout);
         panelClassLayout.setHorizontalGroup(
             panelClassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 324, Short.MAX_VALUE)
+            .addGap(0, 595, Short.MAX_VALUE)
         );
         panelClassLayout.setVerticalGroup(
             panelClassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 264, Short.MAX_VALUE)
+            .addGap(0, 466, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("Class", panelClass);
+        tabbedPanel.addTab("Class", panelClass);
+        panelClass.setBackground(Color.lightGray);
 
         javax.swing.GroupLayout panelStatsLayout = new javax.swing.GroupLayout(panelStats);
         panelStats.setLayout(panelStatsLayout);
         panelStatsLayout.setHorizontalGroup(
             panelStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 324, Short.MAX_VALUE)
+            .addGap(0, 595, Short.MAX_VALUE)
         );
         panelStatsLayout.setVerticalGroup(
             panelStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 264, Short.MAX_VALUE)
+            .addGap(0, 466, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("Stats", panelStats);
+        tabbedPanel.addTab("Stats", panelStats);
+        panelStats.setBackground(Color.lightGray);
 
         javax.swing.GroupLayout panelEquipmentLayout = new javax.swing.GroupLayout(panelEquipment);
         panelEquipment.setLayout(panelEquipmentLayout);
         panelEquipmentLayout.setHorizontalGroup(
             panelEquipmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 324, Short.MAX_VALUE)
+            .addGap(0, 595, Short.MAX_VALUE)
         );
         panelEquipmentLayout.setVerticalGroup(
             panelEquipmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 264, Short.MAX_VALUE)
+            .addGap(0, 466, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("Equipment", panelEquipment);
+        tabbedPanel.addTab("Equipment", panelEquipment);
+        panelEquipment.setBackground(Color.lightGray);
 
+        menuFile.setFont(new Font("TimesRoman", Font.BOLD, 15));
         menuFile.setText("File");
+
+        menuItemSaveCharacter.setText("Save character");
+        menuItemSaveCharacter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSaveCharacterActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuItemSaveCharacter);
+
+        menuItemLoadCharacter.setText("Load Character");
+        menuFile.add(menuItemLoadCharacter);
+
         menuBar.add(menuFile);
 
+        menuOptions.setFont(new Font("TimesRoman", Font.BOLD, 15));
         menuOptions.setText("Options");
         menuBar.add(menuOptions);
 
         setJMenuBar(menuBar);
+        menuBar.setFont(new Font("TimesRoman", Font.BOLD, 15));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+            .addComponent(tabbedPanel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+            .addComponent(tabbedPanel)
         );
+
+        tabbedPanel.setFont(new Font("TimesRoman", Font.BOLD, 15));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuItemSaveCharacterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSaveCharacterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemSaveCharacterActionPerformed
+
+    private void buttonSexFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSexFemaleActionPerformed
+        try{
+        buttonPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpg_creator/women.jpg")));
+        }
+        catch(Exception e)
+        {
+            textAddPicture.setText("woman.jpg is missing");
+        }
+    }//GEN-LAST:event_buttonSexFemaleActionPerformed
+
+    private void buttonSexMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSexMaleActionPerformed
+        try{
+        buttonPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpg_creator/man.jpg")));
+        }
+        catch(Exception e)
+        {
+            textAddPicture.setText("man.jpg is missing");
+        }
+    }//GEN-LAST:event_buttonSexMaleActionPerformed
+
+    private void buttonAddPictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddPictureActionPerformed
+        try{
+        buttonPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpg_creator/"+textAddPicture.getText())));
+        }
+        catch(Exception e){
+            textAddPicture.setText("There is no file of this name");
+        }
+    }//GEN-LAST:event_buttonAddPictureActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,15 +336,18 @@ public class Your_hero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAddPicture;
     private javax.swing.ButtonGroup buttonGroupSex;
+    private javax.swing.JButton buttonPicture;
     private javax.swing.JRadioButton buttonSexFemale;
     private javax.swing.JRadioButton buttonSexMale;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel labeSex;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelStory;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuFile;
+    private javax.swing.JMenuItem menuItemLoadCharacter;
+    private javax.swing.JMenuItem menuItemSaveCharacter;
     private javax.swing.JMenu menuOptions;
     private javax.swing.JPanel panelClass;
     private javax.swing.JPanel panelEquipment;
@@ -236,6 +355,8 @@ public class Your_hero extends javax.swing.JFrame {
     private javax.swing.JPanel panelRace;
     private javax.swing.JPanel panelStats;
     private javax.swing.JScrollPane scrollStory;
+    private javax.swing.JTabbedPane tabbedPanel;
+    private javax.swing.JTextField textAddPicture;
     private javax.swing.JTextField textName;
     private javax.swing.JTextArea textStory;
     // End of variables declaration//GEN-END:variables
