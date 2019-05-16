@@ -8,6 +8,8 @@ package rpg_creator;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
+import javax.swing.UIManager;
+import javax.swing.border.MatteBorder;
 
 /**
  *
@@ -47,9 +49,21 @@ public class Your_hero extends javax.swing.JFrame {
         textAddPicture = new javax.swing.JTextField();
         buttonAddPicture = new javax.swing.JButton();
         panelRace = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listRace = new javax.swing.JList<>();
+        labelRace = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        infoRaceText = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
         panelClass = new javax.swing.JPanel();
         panelStats = new javax.swing.JPanel();
         panelEquipment = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableWeapon = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tableItems = new javax.swing.JTable();
+        labelWeight = new javax.swing.JLabel();
+        buttonCalculateWeight = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuItemSaveCharacter = new javax.swing.JMenuItem();
@@ -60,6 +74,10 @@ public class Your_hero extends javax.swing.JFrame {
         buttonGroupSex.add(buttonSexFemale);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1024, 768));
+        setMinimumSize(new java.awt.Dimension(600, 515));
+        setResizable(false);
 
         buttonPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpg_creator/question.png"))); // NOI18N
         buttonPicture.setText("buttonPicture");
@@ -145,8 +163,8 @@ public class Your_hero extends javax.swing.JFrame {
         panelNameLayout.setVerticalGroup(
             panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelNameLayout.createSequentialGroup()
-                .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelName)
+                .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelName, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labeSex))
                 .addGroup(panelNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelNameLayout.createSequentialGroup()
@@ -166,21 +184,67 @@ public class Your_hero extends javax.swing.JFrame {
                             .addComponent(buttonAddPicture))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textAddPicture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)))
                 .addGap(5, 5, 5))
         );
 
         tabbedPanel.addTab("Name", panelName);
 
+        listRace.setFont(new Font("TimesRoman", Font.ITALIC, 15));
+        listRace.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Human", "Elf", "Orc", "Dwarf", "Nargl" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        listRace.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listRaceValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(listRace);
+
+        labelRace.setFont(new Font("TimesRoman", Font.BOLD, 15));
+        labelRace.setText("Races");
+
+        infoRaceText.setEditable(false);
+        infoRaceText.setColumns(20);
+        infoRaceText.setRows(5);
+        infoRaceText.setFont(new Font("TimesRoman", Font.ITALIC, 15));
+        infoRaceText.setLineWrap(true);
+        infoRaceText.setWrapStyleWord(true);
+        infoRaceText.setText("First select your race");
+        jScrollPane2.setViewportView(infoRaceText);
+
+        jLabel1.setFont(new Font("TimesRoman", Font.BOLD, 15));
+        jLabel1.setText("Info");
+
         javax.swing.GroupLayout panelRaceLayout = new javax.swing.GroupLayout(panelRace);
         panelRace.setLayout(panelRaceLayout);
         panelRaceLayout.setHorizontalGroup(
             panelRaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(panelRaceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelRaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelRace)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(149, 149, 149)
+                .addGroup(panelRaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         panelRaceLayout.setVerticalGroup(
             panelRaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGroup(panelRaceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelRaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelRace)
+                    .addComponent(jLabel1))
+                .addGap(8, 8, 8)
+                .addGroup(panelRaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
 
         tabbedPanel.addTab("Race", panelRace);
@@ -194,7 +258,7 @@ public class Your_hero extends javax.swing.JFrame {
         );
         panelClassLayout.setVerticalGroup(
             panelClassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 546, Short.MAX_VALUE)
         );
 
         tabbedPanel.addTab("Class", panelClass);
@@ -208,21 +272,113 @@ public class Your_hero extends javax.swing.JFrame {
         );
         panelStatsLayout.setVerticalGroup(
             panelStatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGap(0, 546, Short.MAX_VALUE)
         );
 
         tabbedPanel.addTab("Stats", panelStats);
         panelStats.setBackground(Color.lightGray);
 
+        tableWeapon.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createCompoundBorder(), javax.swing.BorderFactory.createCompoundBorder()));
+        tableWeapon.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Weapon", "Stats", "Range", "Weight", "Type"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableWeapon.setToolTipText("");
+        tableWeapon.setAutoscrolls(false);
+        jScrollPane3.setViewportView(tableWeapon);
+
+        tableItems.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Item", "Description", "Weight"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tableItems);
+
+        labelWeight.setText("0");
+
+        buttonCalculateWeight.setText("Calculate Weight");
+        buttonCalculateWeight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCalculateWeightActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelEquipmentLayout = new javax.swing.GroupLayout(panelEquipment);
         panelEquipment.setLayout(panelEquipmentLayout);
         panelEquipmentLayout.setHorizontalGroup(
             panelEquipmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGroup(panelEquipmentLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEquipmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelEquipmentLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelEquipmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelWeight)
+                            .addComponent(buttonCalculateWeight))))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         panelEquipmentLayout.setVerticalGroup(
             panelEquipmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+            .addGroup(panelEquipmentLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelEquipmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEquipmentLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(buttonCalculateWeight)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelWeight))
+                    .addGroup(panelEquipmentLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         tabbedPanel.addTab("Equipment", panelEquipment);
@@ -300,6 +456,32 @@ public class Your_hero extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonAddPictureActionPerformed
 
+    private void listRaceValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listRaceValueChanged
+        String selected=listRace.getSelectedValue();
+        if(selected.equals("Human"))infoRaceText.setText("That is a average,"
+                + " plain looking human");
+        if(selected.equals("Elf"))infoRaceText.setText("Really we want alf in this??");
+        if(selected.equals("Dwarf"))infoRaceText.setText("And whats next orcs");
+        if(selected.equals("Orc"))infoRaceText.setText("Ohh for god sake");
+        if(selected.equals("Nargl"))infoRaceText.setText("You just created this "
+                + "and does not even know what it might look");
+    }//GEN-LAST:event_listRaceValueChanged
+
+    private void buttonCalculateWeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalculateWeightActionPerformed
+        Integer x=0;
+        for(int i=0;i<4;i++)
+        {
+            if(tableWeapon.getModel().getValueAt(i,3)!=null)
+            x+=(Integer)tableWeapon.getModel().getValueAt(i,3);
+        }
+        for(int i=0;i<20;i++)
+        {
+            if(tableItems.getModel().getValueAt(i,2)!=null)
+            x+=(Integer)tableItems.getModel().getValueAt(i,2);
+        }
+        labelWeight.setText(Integer.toString(x));
+    }//GEN-LAST:event_buttonCalculateWeightActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -337,13 +519,23 @@ public class Your_hero extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAddPicture;
+    private javax.swing.JButton buttonCalculateWeight;
     private javax.swing.ButtonGroup buttonGroupSex;
     private javax.swing.JButton buttonPicture;
     private javax.swing.JRadioButton buttonSexFemale;
     private javax.swing.JRadioButton buttonSexMale;
+    private javax.swing.JTextArea infoRaceText;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labeSex;
     private javax.swing.JLabel labelName;
+    private javax.swing.JLabel labelRace;
     private javax.swing.JLabel labelStory;
+    private javax.swing.JLabel labelWeight;
+    private javax.swing.JList<String> listRace;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenuItem menuItemLoadCharacter;
@@ -356,6 +548,8 @@ public class Your_hero extends javax.swing.JFrame {
     private javax.swing.JPanel panelStats;
     private javax.swing.JScrollPane scrollStory;
     private javax.swing.JTabbedPane tabbedPanel;
+    private javax.swing.JTable tableItems;
+    private javax.swing.JTable tableWeapon;
     private javax.swing.JTextField textAddPicture;
     private javax.swing.JTextField textName;
     private javax.swing.JTextArea textStory;
